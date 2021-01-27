@@ -58,7 +58,7 @@
 | area_id      | integer    | null: false       |
 | municipality | string     | null: false       |
 | address      | string     | null: false       |
-| building     | string     | null: true        |
+| building     | string     |                   |
 | phone_number | string     | null: false       |
 | user         | references | foreign_key: true |
 
