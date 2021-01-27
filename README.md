@@ -2,14 +2,16 @@
 
 ##  usersテーブル
 
-|     Colum    | Type   | Option      |
-| -------------|--------|-------------| 
-| nickname     | string | null: false |
-| email        | string | null: false |
-| password     | string | null: false |
-| name_zenkaku | string | null: false |
-| name_kana    | string | null: false |
-| birthday     | string | null: false |
+|     Colum          | Type   | Option      |
+| -------------------|--------|-------------| 
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| last_name_zenkaku  | string | null: false |
+| first_name_zenkaku | string | null: false |
+| last_name_kana     | string | null: false |
+| first_name_kana    | string | null: false |
+| birthday           | date   | null: false |
 
 ### Association
 
@@ -18,14 +20,17 @@
 
 ## items
 
-| Colum       | Type          | Option      |
-|-------------|---------------|-------------|    
-| image       | ActiveStorage | null: false |
-| name        | string        | null: false |
-| explanation | text          | null: false |
-| details     | string        | null: false |
-| delivery    | string        | null: false |
-| price       | string        | null: false |
+| Colum       | Type          | Option            |
+|-------------|---------------|-------------------|
+| name        | string        | null: false       |
+| explanation | text          | null: false       |
+| category    | string        | null: false       |
+| state       | string        | null: false       |
+| borden      | string        | null: false       |
+| area        | string        | null: false       | 
+| days        | string        | null: false       |
+| price       | string        | null: false       |
+| user        | references    | foreign_key: true |
 
 ### ActiveStorage
 
@@ -33,11 +38,26 @@
 
 ## orders
 
-| Colum            | Type   | Option      |
-|------------------|--------|-------------|
-| card_information | Pay.JP | null: false |
-| shipping_address | string | null: false |
+| Colum | Type      | Option            |
+|-------|-----------|-------------------|
+| user  |references | foreign_key: true |
 
 ### ActiveStorage
 
 - belongs_to :user
+- has_one :address
+
+## address
+
+| Colum        | Type       | Option            |
+|--------------|------------|-------------------|
+| postal_code  | string     | null: false       |
+| municipality | string     | null: false       |
+| address      | string     | null: false       |
+| building     | string     | null: true        |
+| phone_number | string     | null: false       |
+| user         | references | foreign_key: true |
+
+### ActiveStorage
+
+-belongs_to :order
