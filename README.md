@@ -1,24 +1,67 @@
-# README
+# DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##  usersテーブル
 
-Things you may want to cover:
+|     Colum          | Type   | Option                    |
+| -------------------|--------|---------------------------| 
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |             |
+| encrypted_password | string | null: false               |
+| last_name_zenkaku  | string | null: false               |
+| first_name_zenkaku | string | null: false               |
+| last_name_kana     | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birthday           | date   | null: false               |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :orders
 
-* Configuration
+## items
 
-* Database creation
+| Colum       | Type          | Option            |
+|-------------|---------------|-------------------|
+| name        | string        | null: false       |
+| explanation | text          | null: false       |
+| category_id | integer       | null: false       |
+| state_id    | integer       | null: false       |
+| borden_id   | integer       | null: false       |
+| area_id     | integer       | null: false       | 
+| day_id      | integer       | null: false       |
+| price       | integer       | null: false       |
+| user        | references    | foreign_key: true |
 
-* Database initialization
+### ActiveStorage
 
-* How to run the test suite
+- belongs_to :user
+- has_one :order
 
-* Services (job queues, cache servers, search engines, etc.)
+## orders
 
-* Deployment instructions
+| Colum | Type       | Option            |
+|-------|------------|-------------------|
+| user  | references | foreign_key: true |
+| item  | references | foreign_key: true |
 
-* ...
+### ActiveStorage
+
+- belongs_to :user
+- belongs_to :item
+- has_one :address
+
+## address
+
+| Colum        | Type       | Option            |
+|--------------|------------|-------------------|
+| postal_code  | string     | null: false       |
+| area_id      | integer    | null: false       |
+| municipality | string     | null: false       |
+| address      | string     | null: false       |
+| building     | string     |                   |
+| phone_number | string     | null: false       |
+| user         | references | foreign_key: true |
+
+### ActiveStorage
+
+- belongs_to :order
