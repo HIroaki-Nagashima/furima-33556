@@ -5,7 +5,7 @@
 |     Colum          | Type   | Option       |
 | -------------------|--------|--------------| 
 | nickname           | string | null: false  |
-| email              | string | unique: true |
+| email_id           | string |              |
 | encrypted_password | string | null: false  |
 | last_name_zenkaku  | string | null: false  |
 | first_name_zenkaku | string | null: false  |
@@ -56,6 +56,7 @@
 |--------------|------------|-------------------|
 | postal_code  | string     | null: false       |
 | area_id      | integer    | null: false       |
+| municipality | string     | null: false       |
 | address      | string     | null: false       |
 | building     | string     | null: true        |
 | phone_number | string     | null: false       |
