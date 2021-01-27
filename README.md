@@ -1,25 +1,42 @@
-# README
+# DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##  usersテーブル
 
-Things you may want to cover:
+|     Colum    | Type   | Option      |
+| -------------|--------|-------------| 
+| nickname     | string | null: false |
+| email        | string | null: false |
+| password     | string | null: false |
+| name_zenkaku | string | null: false |
+| name_kana    | string | null: false |
+| birthday     | string | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :orders
 
-* Configuration
+## items
 
-* Database creation
+| Colum       | Type          | Option      |
+|-------------|---------------|-------------|    
+| image       | ActiveStorage | null: false |
+| name        | string        | null: false |
+| explanation | text          | null: false |
+| details     | string        | null: false |
+| delivery    | string        | null: false |
+| price       | string        | null: false |
 
-* Database initialization
+### ActiveStorage
 
-* How to run the test suite
+- belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
+## orders
 
-* Deployment instructions
+| Colum            | Type   | Option      |
+|------------------|--------|-------------|
+| card_information | Pay.JP | null: false |
+| shipping_address | string | null: false |
 
 ### ActiveStorage
 
