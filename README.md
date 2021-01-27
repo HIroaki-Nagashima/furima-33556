@@ -1,43 +1,24 @@
-# DB設計
+# README
 
-##  usersテーブル
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-|     Colum    | Type   | Option      |
-| -------------|--------|-------------| 
-| nickname     | string | null: false |
-| email        | string | null: false |
-| password     | string | null: false |
-| name_zenkaku | string | null: false |
-| name_kana    | string | null: false |
-| birthday     | string | null: false |
+Things you may want to cover:
 
-### Association
+* Ruby version
 
-- has_many :items
-- has_many :orders
+* System dependencies
 
-## items
+* Configuration
 
-| Colum       | Type          | Option      |
-|-------------|---------------|-------------|    
-| image       | ActiveStorage | null: false |
-| name        | string        | null: false |
-| explanation | text          | null: false |
-| details     | string        | null: false |
-| delivery    | string        | null: false |
-| price       | string        | null: false |
+* Database creation
 
-### ActiveStorage
+* Database initialization
 
-- belongs_to :user
+* How to run the test suite
 
-## orders
+* Services (job queues, cache servers, search engines, etc.)
 
-| Colum            | Type   | Option      |
-|------------------|--------|-------------|
-| card_information | Pay.JP | null: false |
-| shipping_address | string | null: false |
+* Deployment instructions
 
-### ActiveStorage
-
-- belongs_to :user
+* ...
