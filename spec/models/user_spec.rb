@@ -90,28 +90,28 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Birthday can't be blank")
       end
-      it "passwordが英字のみでは登録できない" do
-        @user.password = "jhfgufj"
-        @user.password_confirmation = "jhfgufj"
+      it 'passwordが英字のみでは登録できない' do
+        @user.password = 'jhfgufj'
+        @user.password_confirmation = 'jhfgufj'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password Password Include both letters and numbers")
+        expect(@user.errors.full_messages).to include('Password Password Include both letters and numbers')
       end
-      it "passwordが数字のみでは登録できない" do
-        @user.password = "123456"
-        @user.password_confirmation = "123456"
+      it 'passwordが数字のみでは登録できない' do
+        @user.password = '123456'
+        @user.password_confirmation = '123456'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password Password Include both letters and numbers")
+        expect(@user.errors.full_messages).to include('Password Password Include both letters and numbers')
       end
-      it "emailに@が含まれていないと登録できない" do
-        @user.email = "test.com"
+      it 'emailに@が含まれていないと登録できない' do
+        @user.email = 'test.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
-      it "passwordが全角英数字だと登録できない" do
-        @user.password = "grt１２３"
-        @user.password_confirmation = "grt１２３"
+      it 'passwordが全角英数字だと登録できない' do
+        @user.password = 'grt１２３'
+        @user.password_confirmation = 'grt１２３'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password Password Include both letters and numbers")
+        expect(@user.errors.full_messages).to include('Password Password Include both letters and numbers')
       end
     end
   end
