@@ -20,11 +20,14 @@ class Item < ApplicationRecord
     validates :day_id
     validates :price
   end
-  validates :category_id, numericality: { other_than: 1 }
-  validates :state_id, numericality: { other_than: 1 }
-  validates :barden_id, numericality: { other_than: 1 }
+
+  with_options numericality: {other_than: 1} do
+  validates :category_id
+  validates :state_id
+  validates :barden_id
+  validates :day_id
+  end
   validates :area_id, numericality: { other_than: 0 }
-  validates :day_id, numericality: { other_than: 1 }
 
   validates :price,
             numericality: { only_integer: true,

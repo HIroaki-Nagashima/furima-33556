@@ -37,7 +37,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Barden can't be blank")
       end
-      it 'areeaが空だと出品できない' do
+      it 'areaが空だと出品できない' do
         @item.area_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Area can't be blank")
