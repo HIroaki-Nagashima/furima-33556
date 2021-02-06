@@ -21,11 +21,11 @@ class Item < ApplicationRecord
     validates :price
   end
 
-  with_options numericality: {other_than: 1} do
-  validates :category_id
-  validates :state_id
-  validates :barden_id
-  validates :day_id
+  with_options numericality: { other_than: 1 } do
+    validates :category_id
+    validates :state_id
+    validates :barden_id
+    validates :day_id
   end
   validates :area_id, numericality: { other_than: 0 }
 
