@@ -75,6 +75,16 @@ RSpec.describe OrderFurima, type: :model do
         @order_furima.valid?
         expect(@order_furima.errors.full_messages).to include("Phone number Phone number Input only number")
       end
+      it 'user_idが空だと登録できない' do
+        @order_furima.user_id = ''
+        @order_furima.valid?
+        expect(@order_furima.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが空だと登録できない' do
+        @order_furima.item_id = ''
+        @order_furima.valid?
+        expect(@order_furima.errors.full_messages).to include("Item can't be blank")
+      end
     end
   end
 end
