@@ -60,7 +60,7 @@
 | address      | string     | null: false       |
 | building     | string     |                   |
 | phone_number | string     | null: false       |
-| user         | references | foreign_key: true |
+| order        | references | foreign_key: true |
 
 ### ActiveStorage
 
