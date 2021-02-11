@@ -53,10 +53,6 @@ class ItemsController < ApplicationController
   end
 
   def set_redirect
-    redirect_to root_path unless current_user.id == @item.user_id
-  end
-
-  def set_order_redirect
-    redirect_to root_path if @item.user_id == current_user.id || @item.order.present?
+    redirect_to root_path if @item.user_id != current_user.id || @item.order.present?
   end
 end
