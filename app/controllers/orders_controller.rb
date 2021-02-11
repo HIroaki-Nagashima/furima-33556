@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController 
   before_action :authenticate_user!
   before_action :set_order, only: [:index, :create]
+  before_action :set_redirect, only: [:index, :create]
   def index
-    redirect_to root_path if @item.user_id == current_user.id || @item.order.present?
     @order_furima = OrderFurima.new
   end
 
@@ -34,5 +34,9 @@ class OrdersController < ApplicationController
         card: furima_params[:token],    
         currency: 'jpy'                
     )
+  end
+
+  def set_redirect
+    redirect_to root_path if @item.user_id == current_user.id || @item.order.present?
   end
 end

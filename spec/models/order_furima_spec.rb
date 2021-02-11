@@ -14,6 +14,10 @@ RSpec.describe OrderFurima, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@order_furima).to be_valid
       end
+      it 'buildingが空でも登録できる' do
+        @order_furima.building = ''
+        expect(@order_furima).to be_valid
+      end
     end
     context '購入ができなかった時' do
       it 'tokenが空では登録できないこと' do
@@ -63,6 +67,11 @@ RSpec.describe OrderFurima, type: :model do
       end
       it 'phone_numberが11桁以下でないと登録できない' do
         @order_furima.phone_number = '090123456789'
+        @order_furima.valid?
+        expect(@order_furima.errors.full_messages).to include("Phone number Phone number Input only number")
+      end
+      it 'phone_numberが英数混合では登録できない' do
+        @order_furima.phone_number = '4857jhag123'
         @order_furima.valid?
         expect(@order_furima.errors.full_messages).to include("Phone number Phone number Input only number")
       end
