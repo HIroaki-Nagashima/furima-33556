@@ -20,5 +20,5 @@ class Area < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :items
-  has_many :order_furima
+  has_many :orders_furima
 end
